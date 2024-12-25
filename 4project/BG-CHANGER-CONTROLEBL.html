@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG-CHAGNER-CONTROLABLE</title>
+    <style>
+        body{
+            background-color: black;
+            color:  white;
+
+        }
+        .navbar{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            background-color: aqua;
+            /* height: 25px; */
+        }
+        #home{
+            background-color: beige;
+            height: 20px;
+            width: 35px;
+            margin-right: 25px;
+            border-radius: 5px;
+        }
+
+        #goolge{
+            background-color: beige;
+            height: 20px;
+            width: 35px;
+            margin-left: 25px;
+            border-radius: 5px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+        #start{
+            height: 25px;
+        }
+        #stop{
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="" id="home">Home</a>
+        <a href="" id="goolge">Google</a>
+    </div>
+    <div class="container">
+        <button id="stop">Stop</button>
+        <button id="start">Start</button>
+    </div>
+    <script>
+       function generateColor(){
+            let color = '#';
+            let letter = '0123456789ABCDEF';
+            for(let i = 0; i < 6; i++){
+                color += letter[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+        let bg;
+        const startChangeColor =  function start() {
+            bg =  setInterval(changeColor, 1000);
+        }
+       function changeColor() {
+        document.body.style.backgroundColor = generateColor();
+       }
+
+       document.querySelector('#start').addEventListener('click', startChangeColor);
+       
+       const stop = function stop(){
+        clearInterval(bg);
+       }
+       document.querySelector('#stop').addEventListener('click', stop)
+
+
+    </script>
+</body>
+</html>
